@@ -104,7 +104,7 @@ export default function Navbar(props) {
                   color: "white",
                   fontWeight: "300px",
                 }}
-                to="/Sign-Up"
+                to="/Register"
               >
                 SIGN UP
               </Link>

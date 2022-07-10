@@ -24,7 +24,9 @@ const Login = () => {
             <h2>Login</h2>
           </div>
           <br></br>
-          <label classfor="email">Email</label>
+          <label className="email" for="email">
+            Email
+          </label>
           <TextField fullWidth label="user@gmail.com" id="email" />
           <label for="password">Password</label>
           <TextField fullWidth label="password" id="password" />

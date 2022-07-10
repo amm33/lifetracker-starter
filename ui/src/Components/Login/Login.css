@@ -21,8 +21,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
 }
 
+.container .footer {
+  border-top: 1px solid black;
+}
 .container .footer a {
   text-decoration: none;
   /* color: #00c98e; */
