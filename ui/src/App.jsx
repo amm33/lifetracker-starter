@@ -16,13 +16,14 @@ import Login from "./Components/Login/Login";
 import SignUp from "./Components/SignUp/SignUp";
 
 function App() {
-  // const [count, setCount] = useState(0);
+  //if logged in
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <>
       <BrowserRouter>
-        <Navbar></Navbar>
-        {/* <Home /> */}
+        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}></Navbar>
+
         {/* <Container
         maxWidth={false}
         sx={{ backgroundColor: "orange", flexGrow: 1 }}
