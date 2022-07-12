@@ -7,7 +7,7 @@ import * as React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Navbar
-import Home from "./Components/Home/Home";
+import LandingPage from "./Components/LandingPage/LandingPage";
 import Activity from "./Components/Activity/Activity";
 import Exercise from "./Components/Exercise/Exercise";
 import Nutrition from "./Components/Nutrition/Nutrition";
@@ -21,51 +21,56 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}></Navbar>
+      <div className="app">
+        <BrowserRouter>
+          <Navbar
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+          ></Navbar>
 
-        {/* <Container
+          {/* <Container
         maxWidth={false}
         sx={{ backgroundColor: "orange", flexGrow: 1 }}
       >
         My Container
       </Container> */}
 
-        {/* Home route */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
+          {/* Home route */}
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+          </Routes>
 
-        {/* Activity Route */}
-        <Routes>
-          <Route path="/Activity" element={<Activity />} />
-        </Routes>
+          {/* Activity Route */}
+          <Routes>
+            <Route path="/Activity" element={<Activity />} />
+          </Routes>
 
-        {/* Exercise Route */}
-        <Routes>
-          <Route path="/Exercise" element={<Exercise />}></Route>
-        </Routes>
+          {/* Exercise Route */}
+          <Routes>
+            <Route path="/Exercise" element={<Exercise />}></Route>
+          </Routes>
 
-        {/* Nutrition Route  */}
-        <Routes>
-          <Route path="/Nutrition" element={<Nutrition />}></Route>
-        </Routes>
+          {/* Nutrition Route  */}
+          <Routes>
+            <Route path="/Nutrition" element={<Nutrition />}></Route>
+          </Routes>
 
-        {/* Sleep Route  */}
-        <Routes>
-          <Route path="/Sleep" element={<Sleep />}></Route>
-        </Routes>
+          {/* Sleep Route  */}
+          <Routes>
+            <Route path="/Sleep" element={<Sleep />}></Route>
+          </Routes>
 
-        {/* Login Route  */}
-        <Routes>
-          <Route path="/Login" element={<Login />}></Route>
-        </Routes>
+          {/* Login Route  */}
+          <Routes>
+            <Route path="/Login" element={<Login />}></Route>
+          </Routes>
 
-        {/* Sign Up Route  */}
-        <Routes>
-          <Route path="/Register" element={<SignUp />}></Route>
-        </Routes>
-      </BrowserRouter>
+          {/* Sign Up Route  */}
+          <Routes>
+            <Route path="/Register" element={<SignUp />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
     </>
   );
 }

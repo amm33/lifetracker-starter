@@ -1,7 +1,7 @@
 import * as React from "react";
-import "./Home.css";
+import "./LandingPage.css";
 
-export default function Home() {
+export default function LandingPage() {
   return (
     <div className="Home">
       <div className="center">
