@@ -1,4 +1,4 @@
-.Home .center {
+.landing-page .center {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -8,11 +8,11 @@
   position: relative;
 }
 
-.Home .center img {
+.landing-page .center img {
   position: absolute;
 }
 
-.Home .center h1 {
+.landing-page .center h1 {
   color: white;
   position: relative;
   z-index: 10;
@@ -20,7 +20,7 @@
   font-weight: 700;
 }
 
-.Home .center p {
+.landing-page .center p {
   font-size: 24px;
   color: white;
   position: relative;
@@ -29,7 +29,7 @@
 }
 
 /* bottom icons */
-.Home .bottomImages {
+.landing-page .bottomImages {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -41,28 +41,28 @@
   margin-right: auto;
 }
 
-.Home .bottomImages .Fitness {
+.landing-page .bottomImages .Fitness {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.Home .bottomImages .Food {
+.landing-page .bottomImages .Food {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.Home .bottomImages .Rest {
+.landing-page .bottomImages .Rest {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.Home .bottomImages .Planner {
+.landing-page .bottomImages .Planner {
   display: flex;
   flex-direction: column;
   align-items: center;

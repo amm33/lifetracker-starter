@@ -12,106 +12,110 @@ import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
-    <Box sx={{ flexGrow: 0 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <Logo />
-          </IconButton>
+    <div className="navbar">
+      <Box sx={{ flexGrow: 0 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <div className="logo">
+                <Logo />
+              </div>
+            </IconButton>
 
-          {/* Links */}
-          <div className="links">
-            <div className="Activity">
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                  fontWeight: "400px",
-                }}
-                to={props.isLoggedIn ? "/activity" : "/login"}
-                color="inherit"
-              >
-                ACTIVITY
-              </Link>
-            </div>
+            {/* Links */}
+            <div className="nav-links">
+              <div className="Activity">
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    fontWeight: "400px",
+                  }}
+                  to={props.isLoggedIn ? "/activity" : "/login"}
+                  color="inherit"
+                >
+                  ACTIVITY
+                </Link>
+              </div>
 
-            <div className="Exercise">
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                  fontWeight: "300px",
-                }}
-                to={props.isLoggedIn ? "/exercise" : "/login"}
-                color="inherit"
-              >
-                EXERCISE
-              </Link>
-            </div>
+              <div className="Exercise">
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    fontWeight: "300px",
+                  }}
+                  to={props.isLoggedIn ? "/exercise" : "/login"}
+                  color="inherit"
+                >
+                  EXERCISE
+                </Link>
+              </div>
 
-            <div className="Nutrition">
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                  fontWeight: "300px",
-                }}
-                to={props.isLoggedIn ? "/nutrition" : "/login"}
-                color="inherit"
-              >
-                NUTRITION
-              </Link>
-            </div>
+              <div className="Nutrition">
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    fontWeight: "300px",
+                  }}
+                  to={props.isLoggedIn ? "/nutrition" : "/login"}
+                  color="inherit"
+                >
+                  NUTRITION
+                </Link>
+              </div>
 
-            <div className="Sleep">
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                  fontWeight: "300px",
-                }}
-                to={props.isLoggedIn ? "/sleep" : "/login"}
-                color="inherit"
-              >
-                SLEEP
-              </Link>
-            </div>
+              <div className="Sleep">
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    fontWeight: "300px",
+                  }}
+                  to={props.isLoggedIn ? "/sleep" : "/login"}
+                  color="inherit"
+                >
+                  SLEEP
+                </Link>
+              </div>
 
-            <div className="Login">
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                  fontWeight: "300px",
-                }}
-                to="/login"
-                color="inherit"
-              >
-                LOGIN
-              </Link>
-            </div>
+              <div className="Login">
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    fontWeight: "300px",
+                  }}
+                  to="/login"
+                  color="inherit"
+                >
+                  LOGIN
+                </Link>
+              </div>
 
-            <div className="SignUp">
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                  fontWeight: "300px",
-                }}
-                to="/register"
-              >
-                SIGN UP
-              </Link>
+              <div className="SignUp">
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    fontWeight: "300px",
+                  }}
+                  to="/register"
+                >
+                  SIGN UP
+                </Link>
+              </div>
             </div>
-          </div>
-        </Toolbar>
-      </AppBar>
-    </Box>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </div>
   );
 }

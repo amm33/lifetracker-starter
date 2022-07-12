@@ -1,4 +1,4 @@
-.links {
+.nav-links {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -11,27 +11,27 @@
   gap: 50px;
 }
 
-.links .Activity:hover {
+.nav-links .Activity:hover {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.links .Exercise:hover {
+.nav-links .Exercise:hover {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.links .Nutrition:hover {
+.nav-links .Nutrition:hover {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.links .Sleep:hover {
+.nav-links .Sleep:hover {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.links .Login:hover {
+.nav-links .Login:hover {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.links .SignUp {
+.nav-links .SignUp {
   border: 1px solid transparent;
   display: flex;
   align-items: center;
@@ -46,6 +46,6 @@
   color: #fff;
 }
 
-.links .SignUp:hover {
+.nav-links .SignUp:hover {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
