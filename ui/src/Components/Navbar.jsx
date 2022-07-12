@@ -34,7 +34,7 @@ export default function Navbar(props) {
                   color: "white",
                   fontWeight: "400px",
                 }}
-                to={props.isLoggedIn ? "/Activity" : "/Login"}
+                to={props.isLoggedIn ? "/activity" : "/login"}
                 color="inherit"
               >
                 ACTIVITY
@@ -48,7 +48,7 @@ export default function Navbar(props) {
                   color: "white",
                   fontWeight: "300px",
                 }}
-                to={props.isLoggedIn ? "/Exercise" : "/Login"}
+                to={props.isLoggedIn ? "/exercise" : "/login"}
                 color="inherit"
               >
                 EXERCISE
@@ -62,7 +62,7 @@ export default function Navbar(props) {
                   color: "white",
                   fontWeight: "300px",
                 }}
-                to={props.isLoggedIn ? "/Nutrition" : "/Login"}
+                to={props.isLoggedIn ? "/nutrition" : "/login"}
                 color="inherit"
               >
                 NUTRITION
@@ -76,7 +76,7 @@ export default function Navbar(props) {
                   color: "white",
                   fontWeight: "300px",
                 }}
-                to={props.isLoggedIn ? "/Sleep" : "/Login"}
+                to={props.isLoggedIn ? "/sleep" : "/login"}
                 color="inherit"
               >
                 SLEEP
@@ -90,7 +90,7 @@ export default function Navbar(props) {
                   color: "white",
                   fontWeight: "300px",
                 }}
-                to="/Login"
+                to="/login"
                 color="inherit"
               >
                 LOGIN
@@ -104,7 +104,7 @@ export default function Navbar(props) {
                   color: "white",
                   fontWeight: "300px",
                 }}
-                to="/Register"
+                to="/register"
               >
                 SIGN UP
               </Link>

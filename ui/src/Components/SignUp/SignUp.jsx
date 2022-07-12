@@ -82,7 +82,7 @@ const SignUp = (props) => {
 
   //on submit
   const handleOnSubmit = async () => {
-    // setIsLoading(true);
+    setIsLoading(true);
     setErrors((e) => ({ ...e, form: null }));
 
     if (form.passwordConfirm !== form.password) {

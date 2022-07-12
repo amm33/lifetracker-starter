@@ -14,6 +14,7 @@ import Nutrition from "./Components/Nutrition/Nutrition";
 import Sleep from "./Components/Sleep/Sleep";
 import Login from "./Components/Login/Login";
 import SignUp from "./Components/SignUp/SignUp";
+import NotFound from "./Components/NotFound/NotFound";
 
 function App() {
   //if logged in
@@ -42,32 +43,37 @@ function App() {
 
           {/* Activity Route */}
           <Routes>
-            <Route path="/Activity" element={<Activity />} />
+            <Route path="/activity" element={<Activity />} />
           </Routes>
 
           {/* Exercise Route */}
           <Routes>
-            <Route path="/Exercise" element={<Exercise />}></Route>
+            <Route path="/exercise" element={<Exercise />}></Route>
           </Routes>
 
           {/* Nutrition Route  */}
           <Routes>
-            <Route path="/Nutrition" element={<Nutrition />}></Route>
+            <Route path="/sutrition" element={<Nutrition />}></Route>
           </Routes>
 
           {/* Sleep Route  */}
           <Routes>
-            <Route path="/Sleep" element={<Sleep />}></Route>
+            <Route path="/sleep" element={<Sleep />}></Route>
           </Routes>
 
           {/* Login Route  */}
           <Routes>
-            <Route path="/Login" element={<Login />}></Route>
+            <Route path="/login" element={<Login />}></Route>
           </Routes>
 
           {/* Sign Up Route  */}
           <Routes>
-            <Route path="/Register" element={<SignUp />}></Route>
+            <Route path="/register" element={<SignUp />}></Route>
+          </Routes>
+
+          {/* not found */}
+          <Routes>
+            <Route path="/*" element={<NotFound />}></Route>
           </Routes>
         </BrowserRouter>
       </div>
