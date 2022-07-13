@@ -1,13 +1,16 @@
 import * as React from "react";
-import "./Login.css";
+import "./LoginForm.css";
 import { useState } from "react";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { Navigate } from "react-router-dom";
 
-const Login = (props) => {
+const LoginForm = (props) => {
   //form of the login page
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -44,11 +47,29 @@ const Login = (props) => {
     e.preventDefault();
     setIsLoading(true);
     setErrors((e) => ({ ...e, form: null }));
+
+    const { data, error } = await apiClient.loginUser({
+      email: form.email,
+      username: form.username,
+      first_name: form.firstName,
+      last_name: form.lastName,
+      password: form.password,
+    });
+    if (error) {
+      setErrors((e) => ({ ...e, form: error }));
+    }
+    if (data?.user) {
+      apiClient.setToken(data.token);
+      console.log("data", data);
+      props.setUser(data.user);
+      Navigate("/activity");
+    }
+    setIsProcessing(false);
   };
 
   //body of the page
   return (
-    <div className="login-page">
+    <div className="login-form">
       <div className="container">
         <Box>
           <Stack
@@ -69,10 +90,30 @@ const Login = (props) => {
             <label className="email" for="email">
               Email
             </label>
-            <TextField fullWidth label="user@gmail.com" id="email" />
+            <TextField
+              fullWidth
+              label="user@gmail.com"
+              id="email"
+              value={form.email}
+              onChange={handleOnInputChange}
+            />
+            {errors.email && <span className="error">{errors.email}</span>}
             <label for="password">Password</label>
-            <TextField fullWidth label="password" id="password" />
-            <Button variant="contained">Login</Button>
+            <TextField
+              fullWidth
+              label="password"
+              id="password"
+              value={form.password}
+              onChange={handleOnInputChange}
+            />
+            <Button
+              variant="contained"
+              classname="btn"
+              disabled={isProcessing}
+              onClick={handleOnSubmit}
+            >
+              {isProcessing ? "Loading..." : "Login"}
+            </Button>
 
             <div className="footer">
               <p>
@@ -87,4 +128,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default LoginForm;
