@@ -1,24 +1,22 @@
 import * as React from "react";
 import "./LoginForm.css";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import apiClient from "../../services/apiClient";
+import { useAuthContext } from "../../contexts/auth";
 
-const LoginForm = (props) => {
-  //form of the login page
+export default function LoginForm(props) {
+  // const { user, setUser} = useAuthContext()
+  const navigate = useNavigate();
   const [isProcessing, setIsProcessing] = useState(false);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
-
-  //handling login inputs
   const handleOnInputChange = (event) => {
-    //email portion
     if (event.target.name === "email") {
       if (event.target.value.indexOf("@") === -1) {
         setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
@@ -26,26 +24,12 @@ const LoginForm = (props) => {
         setErrors((e) => ({ ...e, email: null }));
       }
     }
-
-    //password portion
-    if (event.target.name == "password") {
-      if (event.target.value.length < 8) {
-        setErrors((e) => ({
-          ...e,
-          password: "Please enter valid password with greater length than 8",
-        }));
-      } else {
-        setErrors((e) => ({ ...e, password: null }));
-      }
-    }
-
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
   };
 
-  //handling on submit
-  const handleOnSubmit = async (e) => {
+  const handleOnSumbit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    setIsProcessing(true);
     setErrors((e) => ({ ...e, form: null }));
 
     const { data, error } = await apiClient.loginUser({
@@ -62,70 +46,56 @@ const LoginForm = (props) => {
       apiClient.setToken(data.token);
       console.log("data", data);
       props.setUser(data.user);
-      Navigate("/activity");
+      navigate("/activity");
     }
     setIsProcessing(false);
   };
-
-  //body of the page
   return (
     <div className="login-form">
       <div className="container">
-        <Box>
-          <Stack
-            component="form"
-            sx={{
-              // width: "25ch",
-              width: 500,
-              maxWidth: "100%",
-            }}
-            spacing={2}
-            noValidate
-            autoComplete="off"
-          >
-            <div className="header">
-              <h2>Login</h2>
-            </div>
-            <br></br>
-            <label className="email" for="email">
-              Email
-            </label>
-            <TextField
-              fullWidth
-              label="user@gmail.com"
-              id="email"
+        <h2>Login</h2>
+        {Boolean(errors.form) && <span className="error">{errors.form}</span>}
+        <br />
+        <div className="inputs">
+          <div className="form-input">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="user@gmail.com"
               value={form.email}
               onChange={handleOnInputChange}
             />
             {errors.email && <span className="error">{errors.email}</span>}
+          </div>
+          <div className="form-input">
             <label for="password">Password</label>
-            <TextField
-              fullWidth
-              label="password"
-              id="password"
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
               value={form.password}
               onChange={handleOnInputChange}
             />
-            <Button
-              variant="contained"
-              classname="btn"
-              disabled={isProcessing}
-              onClick={handleOnSubmit}
-            >
-              {isProcessing ? "Loading..." : "Login"}
-            </Button>
-
-            <div className="footer">
-              <p>
-                Don't have an account? Sign up
-                <a href="/Register"> here.</a>
-              </p>
-            </div>
-          </Stack>
-        </Box>
+          </div>
+          <button
+            className="btn"
+            disabled={isProcessing}
+            onClick={handleOnSumbit}
+          >
+            {isProcessing ? "Loading..." : "Login"}
+          </button>
+        </div>
+        <div className="footer">
+          <p>
+            Don't have an account? Sign up
+            <span className="blank">_</span>
+            <Link className="link" to="/register">
+              here
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
-};
-
-export default LoginForm;
+}

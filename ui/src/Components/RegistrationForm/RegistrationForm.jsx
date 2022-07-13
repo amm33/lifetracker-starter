@@ -1,17 +1,12 @@
 import * as React from "react";
 import "./RegistrationForm.css";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../services/apiClient";
-import axios from "axios";
-import { Link } from "react-router-dom";
 
-const RegistrationForm = (props) => {
-  //form for the register page
+export default function RegistrationForm(props) {
   const navigate = useNavigate();
   const [isProcessing, setIsProcessing] = useState(false);
   const [errors, setErrors] = useState({});
@@ -23,45 +18,7 @@ const RegistrationForm = (props) => {
     password: "",
     passwordConfirm: "",
   });
-
   const handleOnInputChange = (event) => {
-    //email
-    if (event.target.name === "email") {
-      if (event.target.value.indexOf("@") === -1) {
-        setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
-      } else {
-        setErrors((e) => ({ ...e, email: null }));
-      }
-    }
-
-    //username
-    if (event.target.name === "username") {
-      if (event.target.value.length === 0) {
-        setErrors((e) => ({ ...e, username: "Please enter your username." }));
-      } else {
-        setErrors((e) => ({ ...e, username: null }));
-      }
-    }
-
-    //first name
-    if (event.target.name === "firstName") {
-      if (event.target.value.length === 0) {
-        setErrors((e) => ({ ...e, firstName: "Please enter your first name" }));
-      } else {
-        setErrors((e) => ({ ...e, firstName: null }));
-      }
-    }
-
-    //last name
-    if (event.target.name === "lastName") {
-      if (event.target.value.length === 0) {
-        setErrors((e) => ({ ...e, lastName: "Please enter your last name" }));
-      } else {
-        setErrors((e) => ({ ...e, lastName: null }));
-      }
-    }
-
-    //password
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
         setErrors((e) => ({
@@ -72,7 +29,6 @@ const RegistrationForm = (props) => {
         setErrors((e) => ({ ...e, passwordConfirm: null }));
       }
     }
-    //confirming password
     if (event.target.name === "passwordConfirm") {
       if (form.password && form.password !== event.target.value) {
         setErrors((e) => ({
@@ -83,11 +39,16 @@ const RegistrationForm = (props) => {
         setErrors((e) => ({ ...e, passwordConfirm: null }));
       }
     }
+    if (event.target.name === "email") {
+      if (event.target.value.indexOf("@") === -1) {
+        setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
+      } else {
+        setErrors((e) => ({ ...e, email: null }));
+      }
+    }
 
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
   };
-
-  //on submit
   const handleOnSubmit = async () => {
     setIsProcessing(true);
     setErrors((e) => ({ ...e, form: null }));
@@ -104,7 +65,7 @@ const RegistrationForm = (props) => {
       email: form.email,
       username: form.username,
       first_name: form.firstName,
-      lastName: form.lastName,
+      last_name: form.lastName,
       password: form.password,
     });
     if (error) {
@@ -116,163 +77,130 @@ const RegistrationForm = (props) => {
       navigate("/activity");
     }
     setIsProcessing(false);
-
-    // try {
-    //   console.log(form.date);
-    //   const res = await axios.post("http://localhost:3001/auth/register", {
-    //     date: form.date,
-    //     location: form.location,
-    //     first_name: form.firstName,
-    //     last_name: form.lastName,
-    //     email: form.email,
-    //     password: form.password,
-    //   });
-
-    //     if (res?.data?.user) {
-    //       setAppState(res.data);
-    //       setIsLoading(false);
-    //       navigate("/portal");
-    //     } else {
-    //       setErrors((e) => ({
-    //         ...e,
-    //         form: "Something went wrong with registration",
-    //       }));
-    //       setIsLoading(false);
+    // try{
+    //     const res = await axios.post("http://localhost:3001/auth/register", {
+    //         email : form.email,
+    //         username: form.username,
+    //         first_name: form.firstName,
+    //         last_name: form.lastName,
+    //         password: form.password
+    //     })
+    //     if(res?.data?.user){
+    //         props.setUser(res.data)
+    //         console.log("res.data", res.data)
+    //         setIsProcessing(false)
+    //         navigate("/activity")
+    //     }else{
+    //         setErrors((e) => ({...e, form: "Something went wrong with registration"}))
+    //         setIsProcessing(false)
     //     }
-    // } catch (err) {
-    //   console.log(err);
-    //   const message = err?.response?.data?.error?.message;
-    //   setErrors((e) => ({
-    //     ...e,
-    //     form: message ? String(message) : String(err),
-    //   }));
-    //   setIsLoading(false);
+    // }catch(err){
+    //     console.log(err)
+    //     const message = err?.response?.data?.error?.message
+    //     setErrors((e) => ({...e, form: message ? String(message) : String(err)}))
+    //     setIsProcessing(false)
     // }
   };
-
   return (
-    <div className="registration-form">
+    <div className="registeration-form">
       <div className="container">
-        <Box>
-          <Stack
-            component="form"
-            sx={{
-              // width: "25ch",
-              width: 500,
-              maxWidth: "100%",
-            }}
-            spacing={2}
-            noValidate
-            autoComplete="off"
-          >
-            <div className="header">
-              <h2>Register</h2>
-              {errors.form && <span className="error">{errors.form}</span>}
-            </div>
-            <br></br>
-            <label className="email" for="email">
-              Email
-            </label>
-            <TextField
-              fullWidth
-              label="Enter a Valid Email"
-              id="email"
+        <h2 className="title">Register</h2>
+        {errors.form && <span className="error">{errors.form}</span>}
+        {/* {Boolean(errors.form) && <span className="error">{errors.form}</span>} */}
+        <br />
+        <div className="inputs">
+          <div className="form-input">
+            <label form="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter a valid email"
               value={form.email}
               onChange={handleOnInputChange}
             />
             {errors.email && <span className="error">{errors.email}</span>}
-            <label for="username">Username</label>
-            <TextField
-              fullWidth
-              label="Username"
-              id="username"
+          </div>
+          <div className="form-input">
+            <label form="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="your_username"
               value={form.username}
               onChange={handleOnInputChange}
             />
             {errors.username && (
               <span className="error">{errors.username}</span>
             )}
-          </Stack>
-          <br></br>
-          <TextField
-            id="FirstName-input"
-            label="First Name"
-            type="FirstName"
-            autoComplete="firstName"
-            value={form.firstName}
-            onChange={handleOnInputChange}
-          />
-          {errors.firstName && (
-            <span className="error">{errors.firstName}</span>
-          )}
-          <TextField
-            id="LastName-input"
-            label="Last Name"
-            type="LastName"
-            autoComplete="lastName"
-            value={form.lastName}
-            onChange={handleOnInputChange}
-          />
-          {errors.lastName && <span className="error">{errors.lastName}</span>}
-          <Stack
-            component="form"
-            sx={{
-              // width: "25ch",
-              width: 500,
-              maxWidth: "100%",
-            }}
-            spacing={2}
-            noValidate
-            autoComplete="off"
-          >
-            <label for="Password">Password</label>
-            <TextField
-              fullWidth
-              label="Enter a Secure Password"
-              id="password"
+          </div>
+          <div className="split-form-input">
+            <div className="form-input">
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                value={form.first_name}
+                onChange={handleOnInputChange}
+              />
+              {errors.firstName && (
+                <span className="error">{errors.firstName}</span>
+              )}
+            </div>
+            <div className="form-input">
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                value={form.last_name}
+                onChange={handleOnInputChange}
+              />
+              {errors.lastName && (
+                <span className="error">{errors.lastName}</span>
+              )}
+            </div>
+          </div>
+          <div className="form-input">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter a secure password"
               value={form.password}
               onChange={handleOnInputChange}
             />
             {errors.password && (
               <span className="error">{errors.password}</span>
             )}
-            <label for="ConfirmPassword">Confirm Password</label>
-            <TextField
-              fullWidth
-              label="Confirm Password"
-              id="confirmPassword"
-              value={form.passwordConfirm}
+          </div>
+          <div className="form-input">
+            <label for="passwordConfirm">Confirm Password</label>
+            <input
+              type="password"
+              name="passwordConfirm"
+              placeholder="Confirm your password"
+              value={form.password_confirm}
               onChange={handleOnInputChange}
             />
-            <Button
-              variant="contained"
-              disabled={isProcessing}
-              onClick={handleOnSubmit}
-            >
-              {" "}
-              {isProcessing ? "Loading..." : "Register"}
-            </Button>
-
-            <div className="footer">
-              <p>
-                Already have an account? Login
-                <a href="/Login"> here.</a>
-              </p>
-            </div>
-          </Stack>
-        </Box>
+            {errors.passwordConfirm && (
+              <span className="error">{errors.passwordConfirm}</span>
+            )}
+          </div>
+          <button
+            className="btn"
+            disabled={isProcessing}
+            onClick={handleOnSubmit}
+          >
+            {isProcessing ? "Loading..." : "Create Account"}
+          </button>
+        </div>
+        <div className="footer">
+          <p>
+            Already have an account? Login
+            <span className="blank">_</span>
+            <Link to="/login">here</Link>
+          </p>
+        </div>
       </div>
     </div>
   );
-};
-
-export default RegistrationForm;
-
-{
-  /* <TextField
-            id="outlined-password-input"
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-          /> */
 }
