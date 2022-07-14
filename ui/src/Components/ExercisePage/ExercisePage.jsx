@@ -18,8 +18,11 @@ const ExercisePage = (props) => {
               element={
                 <ExerciseOverview exercise={props.exercise} user={props.user} />
               }
-            ></Route>
-            <Route path="/create" element={<ExerciseForm />}></Route>
+            >
+              //{" "}
+            </Route>
+            {/* //   <Route path="/create" element={<ExerciseForm />}></Route> */}
+            //{" "}
           </Routes>
         </main>
       ) : (
