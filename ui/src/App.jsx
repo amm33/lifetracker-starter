@@ -115,16 +115,14 @@ import * as React from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import LandingPage from "./Components/LandingPage/LandingPage";
-// import LoginForm from "../LoginForm/LoginForm";
-// import RegistrationFrom from "../RegistrationForm/RegistrationForm";
-import Nutrition from "./Components/Nutrition/Nutrition";
+import NutritionPage from "./Components/NutritionPage/NutritionPage";
 import ExercisePage from "./Components/Exercise/ExercisePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LoginPage from "./Components/LoginPage/LoginPage";
 import RegistrationPage from "./Components/RegistrationPage/RegistrationPage";
 import ActivityPage from "./Components/Activity/ActivityPage";
-import Sleep from "./Components/Sleep/Sleep";
+import SleepPage from "./Components/SleepPage/SleepPage";
 import axios from "axios";
 import { AuthContextProvider, useAuthContext } from "./contexts/auth";
 import apiClient from "./services/apiClient";
@@ -248,14 +246,14 @@ function App() {
               <Route
                 path="/nutrition/*"
                 element={
-                  <Nutrition
+                  <NutritionPage
                     handleNutritonForm={handleNutritonForm}
                     addNutrition={addNutrition}
                     nutrition={nutrition}
                     isLogin={isLogin}
                     user={user}
                     setUser={setUser}
-                  ></Nutrition>
+                  ></NutritionPage>
                 }
               ></Route>
               <Route
@@ -272,12 +270,12 @@ function App() {
               <Route
                 path="/sleep/*"
                 element={
-                  <Sleep
+                  <SleepPage
                     addSleep={addSleep}
                     sleep={sleep}
                     user={user}
                     setUser={setUser}
-                  ></Sleep>
+                  ></SleepPage>
                 }
               ></Route>
             </Routes>

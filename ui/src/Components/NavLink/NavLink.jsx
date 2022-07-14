@@ -7,19 +7,15 @@ export default function NavLink(props) {
   return (
     <ul className="nav-links">
       <li>
-        {/* <a href="">Activity</a> */}
         <Link to="/activity">Activity</Link>
       </li>
       <li>
-        {/* <a href="">Exercise</a> */}
         <Link to="/exercise">Exercise</Link>
       </li>
       <li>
-        {/* <a href="">Nutrition</a> */}
         <Link to="/nutrition">Nutrition</Link>
       </li>
       <li>
-        {/* <a href="">Sleep</a> */}
         <Link to="/sleep">Sleep</Link>
       </li>
       {props.user.email ? (
@@ -36,14 +32,6 @@ export default function NavLink(props) {
           </li>
         </>
       )}
-      {/* <li>
-                <a href="">Login</a>
-            </li>
-            <li className="btn">
-                <a href="">Sign
-                <span className="blank">_</span>
-                Up</a>
-            </li> */}
     </ul>
   );
 }

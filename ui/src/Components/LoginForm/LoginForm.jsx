@@ -24,19 +24,28 @@ export default function LoginForm(props) {
         setErrors((e) => ({ ...e, email: null }));
       }
     }
+
+    if (event.target.name === "password") {
+      if (event.target.value.length < 1) {
+        setErrors((e) => ({ ...e, password: "Please enter a your password." }));
+      } else {
+        setErrors((e) => ({ ...e, password: null }));
+      }
+    }
+
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
   };
 
-  const handleOnSumbit = async (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     setIsProcessing(true);
     setErrors((e) => ({ ...e, form: null }));
 
     const { data, error } = await apiClient.loginUser({
       email: form.email,
-      username: form.username,
-      first_name: form.firstName,
-      last_name: form.lastName,
+      // username: form.username,
+      // first_name: form.firstName,
+      // last_name: form.lastName,
       password: form.password,
     });
     if (error) {
@@ -81,7 +90,7 @@ export default function LoginForm(props) {
           <button
             className="btn"
             disabled={isProcessing}
-            onClick={handleOnSumbit}
+            onClick={handleOnSubmit}
           >
             {isProcessing ? "Loading..." : "Login"}
           </button>
@@ -89,7 +98,7 @@ export default function LoginForm(props) {
         <div className="footer">
           <p>
             Don't have an account? Sign up
-            <span className="blank">_</span>
+            <span className="blank"> </span>
             <Link className="link" to="/register">
               here
             </Link>
