@@ -1,10 +1,10 @@
 import * as React from "react";
-import "./ExerciseFeed.css";
+import "./ExerciseDetail.css";
 import ExerciseCard from "../ExerciseCard/ExerciseCard";
-import apiClient from "../../services/apiClient";
-import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-export default function ExerciseFeed(props) {
+export default function ExerciseDetail(props) {
+  const { exerciseId } = useParams();
   const overview = [
     {
       id: 1,
@@ -43,39 +43,13 @@ export default function ExerciseFeed(props) {
       category: "carbs",
     },
   ];
-  const [isFetching, setIsFetching] = useState(false);
-  const [exercise, setExercise] = useState([]);
-  const [error, setError] = useState(null);
-  useEffect(() => {
-    const fetchExercises = async () => {
-      if (!(Object.keys(props.user).length === 0)) {
-        setIsFetching(true);
-        console.log("users.", props.user);
-
-        const { data, error } = await apiClient.listExercises(props.user.id);
-        if (error) {
-          setError(error);
-        }
-        if (data) {
-          console.log("data", data);
-          setExercise(data.exercises);
-        }
-        setIsFetching(false);
-      }
-    };
-
-    fetchExercises();
-  }, []);
   return (
-    <div className="exercise-feed">
-      {exercise.length === 0 ? (
-        <div className="empty">
-          <h2>Nothing here yet.</h2>
-        </div>
-      ) : (
-        exercise.map((element, idx) => {
+    <div className="exercise-detail">
+      {props.exercise.map((element, idx) => {
+        if (element.id == exerciseId) {
           const date = new Date(element.created_at);
           const enUSFormatter = new Intl.DateTimeFormat("en-US");
+          // return <ExerciseCard key={idx} quantity={element.quantity} imageUrl={element.url} name={element.name} calories={element.calories} category={element.category} createdAt={element.date} id={element.id}></ExerciseCard>
           return (
             <ExerciseCard
               key={idx}
@@ -86,8 +60,8 @@ export default function ExerciseFeed(props) {
               created_at={enUSFormatter.format(date)}
             ></ExerciseCard>
           );
-        })
-      )}
+        }
+      })}
     </div>
   );
 }

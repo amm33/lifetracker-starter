@@ -6,11 +6,43 @@
 .activity-page .banner {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: #3d4a46;
+  justify-content: left;
 }
 
-.activity-page .banner h1 {
+h2 {
   font-size: 42px;
   color: white;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-size: 42px;
+}
+
+/* add exercise button  */
+.Button.outline.gold {
+  background: transparent;
+  color: #ffab09;
+  border: 1px solid #ffab09;
+}
+
+/* log sleep button  */
+.Button.outline.blue {
+  background: transparent;
+  color: #4e81eb;
+  border: 1px solid #4e81eb;
+}
+
+/* record nutrition button  */
+.Button.outline.aqua {
+  background: transparent;
+  color: #03c5d1;
+  border: 1px solid #03c5d1;
+}
+
+.activity-page .buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  grid-gap: 20px;
+  gap: 20px;
 }

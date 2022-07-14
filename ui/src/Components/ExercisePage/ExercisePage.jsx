@@ -1,10 +1,13 @@
 import * as React from "react";
 import "./ExercisePage.css";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import ExerciseOverview from "../ExerciseOverview/ExerciseOverview";
+import ExerciseNew from "../ExerciseNew/ExerciseNew";
+import ExerciseDetail from "../ExerciseDetail/ExerciseDetail";
 import LoginForm from "../LoginForm/LoginForm";
 
-const ExercisePage = (props) => {
+export default function ExercisePage(props) {
   return (
     <div className="exercise-page">
       {props.user.email ? (
@@ -16,13 +19,24 @@ const ExercisePage = (props) => {
             <Route
               path="/"
               element={
-                <ExerciseOverview exercise={props.exercise} user={props.user} />
+                <ExerciseOverview
+                  exercise={props.exercise}
+                  user={props.user}
+                ></ExerciseOverview>
               }
-            >
-              //{" "}
-            </Route>
-            {/* //   <Route path="/create" element={<ExerciseForm />}></Route> */}
-            //{" "}
+            ></Route>
+            <Route
+              path="/create"
+              element={
+                <ExerciseNew addExercise={props.addExercise}></ExerciseNew>
+              }
+            ></Route>
+            <Route
+              path="/id/:exerciseId"
+              element={
+                <ExerciseDetail exercise={props.exercise}></ExerciseDetail>
+              }
+            ></Route>
           </Routes>
         </main>
       ) : (
@@ -30,6 +44,4 @@ const ExercisePage = (props) => {
       )}
     </div>
   );
-};
-
-export default ExercisePage;
+}
