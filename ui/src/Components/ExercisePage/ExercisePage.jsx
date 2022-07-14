@@ -2,6 +2,7 @@ import * as React from "react";
 import "./ExercisePage.css";
 import { Routes, Route } from "react-router-dom";
 import ExerciseOverview from "../ExerciseOverview/ExerciseOverview";
+import LoginForm from "../LoginForm/LoginForm";
 
 const ExercisePage = (props) => {
   return (

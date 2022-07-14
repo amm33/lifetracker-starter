@@ -121,7 +121,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LoginPage from "./Components/LoginPage/LoginPage";
 import RegistrationPage from "./Components/RegistrationPage/RegistrationPage";
-import ActivityPage from "./Components/Activity/ActivityPage";
+import ActivityPage from "./Components/ActivityPage/ActivityPage";
 import SleepPage from "./Components/SleepPage/SleepPage";
 import axios from "axios";
 import { AuthContextProvider, useAuthContext } from "./contexts/auth";

@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./ExerciseOverview.css";
 import { Link } from "react-router-dom";
-import ExerciseFeed from "../ExerciseFeed/ExerciseFeed";
+// import ExerciseFeed from "../ExerciseFeed/ExerciseFeed";
 
 const ExerciseOverview = (props) => {
   return (
@@ -12,7 +12,7 @@ const ExerciseOverview = (props) => {
           Add Exercise
         </Link>
       </div>
-      <ExerciseFeed exercise={props.exercise} user={props.user} />
+      {/* <ExerciseFeed exercise={props.exercise} user={props.user} /> */}
     </div>
   );
 };
