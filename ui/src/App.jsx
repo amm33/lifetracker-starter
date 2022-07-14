@@ -116,7 +116,7 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import LandingPage from "./Components/LandingPage/LandingPage";
 import NutritionPage from "./Components/NutritionPage/NutritionPage";
-import ExercisePage from "./Components/Exercise/ExercisePage";
+import ExercisePage from "./Components/ExercisePage/ExercisePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LoginPage from "./Components/LoginPage/LoginPage";
