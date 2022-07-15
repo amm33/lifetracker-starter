@@ -9,7 +9,7 @@ export default function NutritionOverview(props) {
       <div className="nutrition-overview">
         <div className="header">
           <h3>Overview</h3>
-          <Link className="add" to="/nutrition/create">
+          <Link className="add-n" to="/nutrition/create">
             Record Nutrition
           </Link>
         </div>

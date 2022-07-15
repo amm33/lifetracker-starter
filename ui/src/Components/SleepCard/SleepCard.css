@@ -7,7 +7,7 @@
   justify-content: space-between;
   position: relative;
   padding: 16px 32px;
-  background: linear-gradient(64.7deg, #1000c9, #00c98e);
+  background: linear-gradient(64.7deg, pink, pink);
 }
 .card-header {
   display: flex;
