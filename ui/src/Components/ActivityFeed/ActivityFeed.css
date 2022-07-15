@@ -1,0 +1,90 @@
+.activity-feed {
+  display: flex;
+  flex-direction: column;
+  background: #2c4147;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 0%;
+  width: 100%;
+}
+.stats {
+  width: 80%;
+  margin-left: 5%;
+  transform: translateY(-50px);
+}
+.btnd {
+  margin-left: 400px;
+  padding: 10px;
+}
+h2 {
+  font-size: 42px;
+  margin-left: -100px;
+  color: white;
+}
+h4 {
+  font-weight: 700;
+  font-size: 30px;
+  color: white;
+}
+
+.activity-feed .actions .buttons .links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin-left: auto;
+  flex: 1 1;
+  max-width: 650px;
+  transform: translateX(-200px);
+  gap: 20px;
+}
+.buttons .exercise {
+  background: transparent;
+  color: #ffab09;
+  border: 1px solid #ffab09;
+  font-size: 18px;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+
+  flex-direction: row;
+  /* transform: translateX(-100px); */
+}
+
+.buttons .nutrition {
+  background: transparent;
+  font-size: 18px;
+  padding: 10px;
+  border: 1px solid #4e81eb;
+  color: #4e81eb;
+  margin: 10px;
+  display: flex;
+}
+
+.buttons .sleep {
+  background: transparent;
+  font-size: 18px;
+  padding: 10px;
+  border: 1px solid #03c5d1;
+  color: #03c5d1;
+  margin: 10px;
+  display: flex;
+}
+
+.per-category {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.per-day {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.stats .here {
+  margin-left: 380px;
+}

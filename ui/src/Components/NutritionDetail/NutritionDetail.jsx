@@ -47,7 +47,6 @@ export default function NutritionDetail(props) {
     <div className="nutrition-detail">
       {props.nutrition.map((element, idx) => {
         if (element.id == nutritionId) {
-          // return <NutritionCard></NutritionCard>
           return (
             <NutritionCard
               key={idx}
